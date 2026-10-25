@@ -1,0 +1,6 @@
+store_id,store_name,region,channel
+STR_001,Central Hub Retail,Central,Offline
+STR_002,West Coast Store,West,Offline
+STR_003,North Flagship,North,Offline
+STR_004,South Outlet,South,Offline
+STR_ONLINE,E-Commerce Channel,Online,Online

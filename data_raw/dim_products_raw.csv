@@ -1,0 +1,101 @@
+product_id,product_name,category,brand,base_price,unit_cost
+PRD_001,Product 1,Home & Garden,Vanguard,2092.69,1383.85
+PRD_002,Product 2,Sports,Vanguard,844.77,563.66
+PRD_003,Product 3,Electronics,Delta,770.17,551.47
+PRD_004,Product 4,Home & Garden,Vanguard,546.46,304.68
+PRD_005,Product 5,Home & Garden,Vanguard,695.35,434.45
+PRD_006,Product 6,Sports,Delta,1696.4,1090.79
+PRD_007,Product 7,Electronics,Delta,1241.32,859.17
+PRD_008,Product 8,Electronics,Apex,241.43,123.35
+PRD_009,Product 9,Home & Garden,Nova,799.05,598.2
+PRD_010,Product 10,Home & Kitchen,Nova,778.28,480.58
+PRD_011,Product 11,Home & Garden,Vanguard,2104.1,1199.11
+PRD_012,Product 12,Home & Garden,Nova,2151.2,1550.74
+PRD_013,Product 13,Home & Garden,Vanguard,486.86,334.44
+PRD_014,Product 14,Home & Garden,Apex,2993.33,2209.88
+PRD_015,Product 15,Sports,Delta,837.0,487.71
+PRD_016,Product 16,Electronics,Delta,2931.01,1870.54
+PRD_017,Product 17,Sports,Delta,1262.56,811.92
+PRD_018,Product 18,Sports,Nova,147.5,109.9
+PRD_019,Product 19,Sports,Apex,1067.96,554.1
+PRD_020,Product 20,Home & Garden,Nova,1921.34,1107.51
+PRD_021,Product 21,Home & Kitchen,Nova,2058.08,1127.27
+PRD_022,Product 22,Electronics,Apex,1616.26,916.61
+PRD_023,Product 23,Home & Kitchen,Apex,1370.96,851.8
+PRD_024,Product 24,Sports,Apex,1681.03,997.14
+PRD_025,Product 25,Sports,Apex,1798.46,1076.69
+PRD_026,Product 26,Home & Kitchen,Delta,288.52,205.15
+PRD_027,Product 27,Home & Kitchen,Horizon,1140.48,835.41
+PRD_028,Product 28,Home & Kitchen,Horizon,764.37,395.64
+PRD_029,Product 29,Sports,Apex,2419.26,1335.99
+PRD_030,Product 30,Sports,Horizon,1437.39,959.87
+PRD_031,Product 31,Electronics,Horizon,2951.1,1740.15
+PRD_032,Product 32,Electronics,Apex,1226.53,691.2
+PRD_033,Product 33,Sports,Horizon,2458.47,1410.73
+PRD_034,Product 34,Home & Kitchen,Nova,2405.12,1396.5
+PRD_035,Product 35,Home & Kitchen,Vanguard,494.62,352.25
+PRD_036,Product 36,Electronics,Vanguard,1549.19,827.51
+PRD_037,Product 37,Sports,Apex,2102.65,1423.97
+PRD_038,Product 38,Electronics,Delta,2582.16,1647.95
+PRD_039,Product 39,Electronics,Apex,1011.58,580.78
+PRD_040,Product 40,Home & Garden,Delta,699.71,423.29
+PRD_041,Product 41,Home & Garden,Vanguard,2147.89,1211.52
+PRD_042,Product 42,Home & Garden,Apex,2438.03,1591.74
+PRD_043,Product 43,Home & Kitchen,Nova,1078.56,561.28
+PRD_044,Product 44,Sports,Horizon,333.72,167.29
+PRD_045,Product 45,Sports,Delta,2824.54,1855.65
+PRD_046,Product 46,Sports,Horizon,1222.84,670.81
+PRD_047,Product 47,Sports,Horizon,1577.37,816.66
+PRD_048,Product 48,Home & Garden,Apex,2521.24,1510.72
+PRD_049,Product 49,Home & Kitchen,Horizon,2043.29,1047.58
+PRD_050,Product 50,Home & Kitchen,Nova,2218.89,1601.27
+PRD_051,Product 51,Home & Garden,Horizon,666.76,337.98
+PRD_052,Product 52,Home & Kitchen,Apex,1647.27,1062.02
+PRD_053,Product 53,Home & Garden,Nova,2102.56,1281.76
+PRD_054,Product 54,Sports,Vanguard,724.22,483.78
+PRD_055,Product 55,Home & Garden,Horizon,566.12,329.5
+PRD_056,Product 56,Sports,Apex,2947.4,1587.94
+PRD_057,Product 57,Sports,Vanguard,1574.08,1173.41
+PRD_058,Product 58,Electronics,Vanguard,819.45,581.59
+PRD_059,Product 59,Home & Garden,Delta,2988.95,2137.4
+PRD_060,Product 60,Electronics,Nova,2897.99,1630.3
+PRD_061,Product 61,Home & Garden,Horizon,1696.97,864.96
+PRD_062,Product 62,Home & Garden,Apex,2653.78,1528.09
+PRD_063,Product 63,Electronics,Delta,606.69,384.81
+PRD_064,Product 64,Electronics,Nova,872.67,507.6
+PRD_065,Product 65,Home & Garden,Delta,2116.06,1495.99
+PRD_066,Product 66,Home & Kitchen,Nova,2547.65,1446.77
+PRD_067,Product 67,Sports,Nova,2576.16,1909.74
+PRD_068,Product 68,Electronics,Horizon,1243.3,763.78
+PRD_069,Product 69,Sports,Nova,2668.92,1896.28
+PRD_070,Product 70,Home & Kitchen,Delta,2560.24,1404.53
+PRD_071,Product 71,Home & Kitchen,Nova,2810.12,1694.05
+PRD_072,Product 72,Home & Kitchen,Horizon,2366.75,1597.27
+PRD_073,Product 73,Electronics,Horizon,2023.52,1081.75
+PRD_074,Product 74,Home & Kitchen,Delta,1763.03,940.02
+PRD_075,Product 75,Electronics,Vanguard,1148.23,852.43
+PRD_076,Product 76,Home & Kitchen,Vanguard,2823.39,1916.09
+PRD_077,Product 77,Sports,Nova,2922.31,1491.16
+PRD_078,Product 78,Sports,Apex,887.57,532.28
+PRD_079,Product 79,Home & Garden,Nova,950.82,578.46
+PRD_080,Product 80,Sports,Delta,1482.56,1017.05
+PRD_081,Product 81,Home & Garden,Delta,1372.85,772.52
+PRD_082,Product 82,Sports,Delta,2983.65,1629.32
+PRD_083,Product 83,Electronics,Delta,568.98,295.99
+PRD_084,Product 84,Sports,Delta,103.32,62.72
+PRD_085,Product 85,Home & Garden,Horizon,1506.99,1012.89
+PRD_086,Product 86,Home & Garden,Vanguard,577.53,297.17
+PRD_087,Product 87,Home & Kitchen,Delta,1131.08,824.33
+PRD_088,Product 88,Electronics,Apex,2245.3,1370.95
+PRD_089,Product 89,Sports,Apex,2176.77,1218.88
+PRD_090,Product 90,Home & Kitchen,Apex,958.78,501.89
+PRD_091,Product 91,Sports,Apex,1650.49,900.7
+PRD_092,Product 92,Sports,Horizon,1551.0,1137.9
+PRD_093,Product 93,Home & Kitchen,Apex,1927.18,1271.11
+PRD_094,Product 94,Home & Kitchen,Delta,788.86,496.33
+PRD_095,Product 95,Home & Kitchen,Nova,1790.12,1189.14
+PRD_096,Product 96,Home & Kitchen,Apex,2937.73,1788.84
+PRD_097,Product 97,Home & Kitchen,Horizon,1485.89,1014.13
+PRD_098,Product 98,Sports,Horizon,2722.99,1393.98
+PRD_099,Product 99,Home & Kitchen,Apex,1331.46,854.14
+PRD_100,Product 100,Electronics,Nova,1082.73,584.31
