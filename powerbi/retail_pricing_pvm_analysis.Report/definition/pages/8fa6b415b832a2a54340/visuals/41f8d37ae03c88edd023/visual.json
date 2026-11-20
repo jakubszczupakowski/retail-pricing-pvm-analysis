@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "41f8d37ae03c88edd023",
   "position": {
-    "x": 1328,
-    "y": 304,
+    "x": 1328.5714285714287,
+    "y": 321.42857142857144,
     "z": 6000,
-    "height": 752,
-    "width": 568,
+    "height": 734.28571428571433,
+    "width": 567.14285714285722,
     "tabOrder": 5000
   },
   "visual": {
@@ -164,65 +164,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d8298e8a11b40ab30047",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "FACT_Sales"
-              }
-            },
-            "Property": "promo_type"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "20f4f35c50583dbebe18",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "05183f30ce5c3d16487e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Margin"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "dc02d00cd24a258d440b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Margin %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

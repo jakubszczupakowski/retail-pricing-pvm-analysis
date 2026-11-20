@@ -42,10 +42,11 @@ table _Measures
 	measure 'Average Selling Price' =
 			
 			DIVIDE([Gross Revenue], [Total Units], 0)
+		formatString: #,0
 		displayFolder: 01_Base Measures
 		lineageTag: 06c8429d-f01f-41c1-8920-d375430f6c35
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure 'Average Unit Cost' =
 			
@@ -142,6 +143,7 @@ table _Measures
 			    "Current Revenue", -[Gross Revenue],
 			    BLANK()
 			)
+		displayFolder: 03_PVM Decomposition
 		lineageTag: a5a59a75-db13-4685-9fba-c3dacf6dc04c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -156,6 +158,7 @@ table _Measures
 			    5, [Gross Revenue],
 			    BLANK()
 			)
+		displayFolder: 03_PVM Decomposition
 		lineageTag: 5c648592-270e-4ce3-a7bc-64d067e29fd7
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -177,6 +180,7 @@ table _Measures
 			    5, 0,
 			    BLANK()
 			)
+		displayFolder: 03_PVM Decomposition
 		lineageTag: 873ea366-28de-4108-b4df-bda8502ebf08
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -195,6 +199,7 @@ table _Measures
 			RETURN
 			IF(Val > 0, Val, BLANK())
 			```
+		displayFolder: 03_PVM Decomposition
 		lineageTag: 72fa8da5-2a1b-431c-8d93-da3eb9927d60
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -213,9 +218,142 @@ table _Measures
 			RETURN
 			IF(Val < 0, ABS(Val), BLANK())
 			```
+		displayFolder: 03_PVM Decomposition
 		lineageTag: 3cc83581-5f5a-4624-9f6a-c94638756828
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Executive_Narrative = ```
+			
+			VAR SelYear = SELECTEDVALUE(DIM_Calendar[Year], "All Years")
+			VAR SelChannel = SELECTEDVALUE(dim_store[channel], "All Channels")
+			VAR SelCategory = SELECTEDVALUE(dim_product[category], "All Categories")
+			
+			-- 1. Core Revenue & Margin Metrics
+			VAR RevCurr = [Gross Revenue]
+			VAR RevVar = [Revenue YoY Variance]
+			VAR RevVarPct = DIVIDE(RevVar, [Revenue LY], 0)
+			VAR GM_Val = [Gross Margin]
+			VAR GM_Pct = [Gross Margin %]
+			VAR ASP_Val = [Average Selling Price]
+			
+			-- 2. PVM Decomposition Logic
+			VAR P_Eff = [Price Effect]
+			VAR V_Eff = [Volume Effect]
+			VAR M_Eff = [Mix Effect]
+			
+			VAR AbsP = ABS(P_Eff)
+			VAR AbsV = ABS(V_Eff)
+			VAR AbsM = ABS(M_Eff)
+			
+			VAR TopDriverName = 
+			    SWITCH(
+			        TRUE(),
+			        AbsP >= AbsV && AbsP >= AbsM, "Price Effect",
+			        AbsV >= AbsP && AbsV >= AbsM, "Volume Effect",
+			        "Mix Effect"
+			    )
+			
+			VAR TopDriverVal = 
+			    SWITCH(
+			        TopDriverName,
+			        "Price Effect", P_Eff,
+			        "Volume Effect", V_Eff,
+			        M_Eff
+			    )
+			
+			VAR OtherEffVal = (P_Eff + V_Eff + M_Eff) - TopDriverVal
+			VAR OtherEffLabel = 
+			    SWITCH(
+			        TopDriverName,
+			        "Price Effect", "Volume & Mix",
+			        "Volume Effect", "Price & Mix",
+			        "Price & Volume"
+			    )
+			
+			-- 3. Dynamic Promo Insight (Calculated Live from Active Filters)
+			VAR PromoTable = 
+			    FILTER(
+			        ADDCOLUMNS(
+			            VALUES(FACT_Sales[promo_type]),
+			            "@PromoGM", [Gross Margin %],
+			            "@PromoRev", [Gross Revenue]
+			        ),
+			        NOT ISBLANK([@PromoGM]) && [@PromoRev] > 0
+			    )
+			
+			VAR LowestMarginPromo = 
+			    TOPN(1, PromoTable, [@PromoGM], ASC)
+			
+			VAR WorstPromoName = MAXX(LowestMarginPromo, FACT_Sales[promo_type])
+			VAR WorstPromoGM = MAXX(LowestMarginPromo, [@PromoGM])
+			
+			VAR HighestRevPromo = 
+			    TOPN(1, PromoTable, [@PromoRev], DESC)
+			
+			VAR TopPromoName = MAXX(HighestRevPromo, FACT_Sales[promo_type])
+			VAR TopPromoRevShare = DIVIDE(MAXX(HighestRevPromo, [@PromoRev]), RevCurr, 0)
+			
+			VAR PromoInsightText = 
+			    IF(
+			        COUNTROWS(PromoTable) > 1,
+			        "Top revenue segment is " & TopPromoName & " (" & FORMAT(TopPromoRevShare, "0.0%") & " share), while " & WorstPromoName & " compresses margin to " & FORMAT(WorstPromoGM, "0.0%") & ".",
+			        "Filtered promo tier (" & WorstPromoName & ") operates at " & FORMAT(WorstPromoGM, "0.0%") & " Gross Margin."
+			    )
+			
+			-- 4. Locale-Safe Smart Unit Formatting (M / K / $)
+			VAR RevCurr_Txt = 
+			    SWITCH(TRUE(), ABS(RevCurr) >= 1000000, "$" & FORMAT(DIVIDE(RevCurr, 1000000), "0.0") & "M", ABS(RevCurr) >= 1000, "$" & FORMAT(DIVIDE(RevCurr, 1000), "0.0") & "K", "$" & FORMAT(RevCurr, "0"))
+			
+			VAR RevVar_Abs = ABS(RevVar)
+			VAR RevVar_Txt = 
+			    SWITCH(TRUE(), RevVar_Abs >= 1000000, "$" & FORMAT(DIVIDE(RevVar_Abs, 1000000), "0.0") & "M", RevVar_Abs >= 1000, "$" & FORMAT(DIVIDE(RevVar_Abs, 1000), "0.0") & "K", "$" & FORMAT(RevVar_Abs, "0"))
+			
+			VAR Driver_Abs = ABS(TopDriverVal)
+			VAR Driver_Txt = 
+			    SWITCH(TRUE(), Driver_Abs >= 1000000, "$" & FORMAT(DIVIDE(Driver_Abs, 1000000), "0.0") & "M", Driver_Abs >= 1000, "$" & FORMAT(DIVIDE(Driver_Abs, 1000), "0.0") & "K", "$" & FORMAT(Driver_Abs, "0"))
+			
+			VAR Other_Abs = ABS(OtherEffVal)
+			VAR Other_Txt = 
+			    SWITCH(TRUE(), Other_Abs >= 1000000, "$" & FORMAT(DIVIDE(Other_Abs, 1000000), "0.0") & "M", Other_Abs >= 1000, "$" & FORMAT(DIVIDE(Other_Abs, 1000), "0.0") & "K", "$" & FORMAT(Other_Abs, "0"))
+			
+			VAR GM_Abs = ABS(GM_Val)
+			VAR GM_Txt = 
+			    SWITCH(TRUE(), GM_Abs >= 1000000, "$" & FORMAT(DIVIDE(GM_Abs, 1000000), "0.0") & "M", GM_Abs >= 1000, "$" & FORMAT(DIVIDE(GM_Abs, 1000), "0.0") & "K", "$" & FORMAT(GM_Abs, "0"))
+			
+			-- 5. Dynamic Narrative Connectors
+			VAR DirectionText = IF(RevVar >= 0, "grew by ", "declined by ")
+			VAR DriverSign = IF(TopDriverVal >= 0, "+", "-")
+			VAR OtherSign = IF(OtherEffVal >= 0, "+", "-")
+			VAR OffsetText = 
+			    IF(
+			        (TopDriverVal * OtherEffVal) < 0,
+			        ", partially offset by " & OtherEffLabel & " (" & OtherSign & Other_Txt & ").",
+			        ", further compounded by " & OtherEffLabel & " (" & OtherSign & Other_Txt & ")."
+			    )
+			
+			RETURN
+			"EXECUTIVE SUMMARY (Filters: " & SelYear & " | " & SelChannel & " | " & SelCategory & ")" & UNICHAR(10) &
+			"Revenue " & DirectionText & RevVar_Txt & " (" & FORMAT(RevVarPct, "+0.0%;-0.0%;0.0%") & " YoY) to " & RevCurr_Txt &
+			", driven primarily by " & TopDriverName & " (" & DriverSign & Driver_Txt & ")" & OffsetText &
+			UNICHAR(10) &
+			"Profitability: Gross Margin stands at " & FORMAT(GM_Pct, "0.0%") & " (" & GM_Txt & " | ASP $" & FORMAT(ASP_Val, "0") & "). " & UNICHAR(10) & PromoInsightText
+			```
+		lineageTag: 97a7ff1d-1955-43ce-9eed-94670aa8a054
+
+	measure PVM_Variance_Label =
+			
+			VAR IncVal = [PVM_Increase_Bars]
+			VAR DecVal = [PVM_Decrease_Bars]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    NOT ISBLANK(IncVal), "+" & FORMAT(IncVal, "#,##0,,""M"""),
+			    NOT ISBLANK(DecVal), "-" & FORMAT(DecVal, "#,##0,,""M"""),
+			    BLANK()
+			)
+		displayFolder: 03_PVM Decomposition
+		lineageTag: ceaabde2-a167-4b6d-938e-8aa61bdd7a78
 
 	column Value
 		formatString: 0

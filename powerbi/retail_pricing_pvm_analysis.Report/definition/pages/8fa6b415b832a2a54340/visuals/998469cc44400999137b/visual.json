@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "998469cc44400999137b",
   "position": {
-    "x": 283.35483870967738,
-    "y": 131.61290322580643,
+    "x": 282.85714285714289,
+    "y": 171.42857142857144,
     "z": 5000,
-    "height": 148.64516129032256,
-    "width": 1613.4193548387095,
+    "height": 124.28571428571429,
+    "width": 1614.2857142857144,
     "tabOrder": 4000
   },
   "visual": {
@@ -138,65 +138,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8263eb0cb8bc0717ea66",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "9966940783178a354231",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Revenue YoY Variance"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "917e1512cb0a77408c04",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Gross Margin %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "2a41e3853171b816d051",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Average Selling Price"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

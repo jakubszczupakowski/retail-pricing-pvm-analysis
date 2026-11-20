@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2617a46e774ce95764e0",
   "position": {
-    "x": 24,
+    "x": 24.285714285714288,
     "y": 600,
     "z": 3000,
-    "height": 100,
-    "width": 212,
+    "height": 212.85714285714286,
+    "width": 211.42857142857144,
     "tabOrder": 2000
   },
   "visual": {
@@ -42,7 +42,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -55,7 +55,7 @@
             "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "0D"
                 }
               }
             }
@@ -103,23 +103,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a8b4b2fd6a09103e5bc3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DIM_Product"
-              }
-            },
-            "Property": "category"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

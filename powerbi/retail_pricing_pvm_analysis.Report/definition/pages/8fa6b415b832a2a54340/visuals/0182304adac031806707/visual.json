@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "0182304adac031806707",
   "position": {
-    "x": 284,
-    "y": 304,
+    "x": 284.28571428571428,
+    "y": 321.42857142857144,
     "z": 7000,
-    "height": 752,
-    "width": 1020,
+    "height": 734.28571428571433,
+    "width": 1020.0000000000001,
     "tabOrder": 6000
   },
   "visual": {
@@ -231,6 +231,27 @@
                   "Value": "true"
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9.5D"
+                }
+              }
+            },
+            "optimizeLabelDisplay": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelContainerMaxWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "206D"
+                }
+              }
             }
           }
         },
@@ -267,6 +288,33 @@
           },
           "selector": {
             "metadata": "_Measures.PVM_Total_Bars"
+          }
+        },
+        {
+          "properties": {
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Auto'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.PVM_Increase_Bars"
+          }
+        }
+      ],
+      "totals": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ]
@@ -350,93 +398,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "748c64403ec5c2203d21",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "pvm_bridge_axis"
-              }
-            },
-            "Property": "Step"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "77f713c5e53bc837459b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "PVM_Base_Offset"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7247c381c7383e821755",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "PVM_Total_Bars"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "32f3f0fab690be761a40",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "PVM_Increase_Bars"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a9fadf46d25e0b04b6e8",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "PVM_Decrease_Bars"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "20c69b6c6188b7b622a0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "PVM Waterfall Value"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

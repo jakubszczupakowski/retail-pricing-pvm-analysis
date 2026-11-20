@@ -75,7 +75,7 @@ table DIM_Calendar
 		mode: import
 		source =
 				
-				VAR MinYear = 2024
+				VAR MinYear = 2023
 				VAR MaxYear = 2025
 				RETURN
 				ADDCOLUMNS(
