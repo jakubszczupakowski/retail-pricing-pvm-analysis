@@ -1,0 +1,133 @@
+table FACT_Sales
+	lineageTag: c9c70f78-b6b8-41b0-9722-e1c085eff906
+
+	column transaction_id
+		dataType: string
+		isHidden
+		lineageTag: 29c1bf98-61bd-44e0-a33f-04647dfbf19e
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9c60a625-9f6b-40d1-85bb-6827b7392976
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 9781049c-fa5a-49d4-864b-d476c549c6e3
+		summarizeBy: none
+		sourceColumn: store_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		isHidden
+		lineageTag: a05cd713-aeb2-4a01-a060-ecb6921b10d7
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ab02abb-3413-42a8-a2ac-61607f4f18d4
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_type
+		dataType: string
+		lineageTag: 6b054de5-8885-4739-9884-875629430b7a
+		summarizeBy: none
+		sourceColumn: promo_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_promo
+		dataType: int64
+		formatString: 0
+		lineageTag: 7210d601-b525-4064-8156-090e9a4c9498
+		summarizeBy: sum
+		sourceColumn: is_promo
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_rate
+		dataType: double
+		lineageTag: 28348db6-b99e-4f9b-b5c9-a47da8300109
+		summarizeBy: sum
+		sourceColumn: discount_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit_selling_price
+		dataType: double
+		lineageTag: d2f7b1bb-b5ed-4b7c-adc0-627c62483529
+		summarizeBy: sum
+		sourceColumn: unit_selling_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_revenue
+		dataType: double
+		lineageTag: 56da4f86-b208-4c84-9f57-2ce02ea1b060
+		summarizeBy: sum
+		sourceColumn: gross_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_cogs
+		dataType: double
+		lineageTag: ecd4ef46-823e-4142-9aee-6d4e085c7b26
+		summarizeBy: sum
+		sourceColumn: total_cogs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_margin
+		dataType: double
+		lineageTag: f5e78a90-3558-4c7e-b3da-c7df64cf19ed
+		summarizeBy: sum
+		sourceColumn: gross_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FACT_Sales = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents("C:\Portfolio\retail-pricing-pvm-analysis\data_clean\fact_sales.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

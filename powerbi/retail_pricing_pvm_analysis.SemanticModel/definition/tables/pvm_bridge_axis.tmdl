@@ -1,0 +1,39 @@
+table pvm_bridge_axis
+	lineageTag: 0ca8d209-41b8-4216-a877-06e98f02be84
+
+	column Step
+		lineageTag: 99b59a52-baf1-48bf-a11c-80acb6f42fb2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Step]
+		sortByColumn: Sort_Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort_Order
+		formatString: 0
+		lineageTag: a02ab25c-1885-4906-a526-5894d192fe47
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort_Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pvm_bridge_axis = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Step", STRING,
+				    "Sort_Order", INTEGER,
+				    {
+				        {"Revenue LY", 1},
+				        {"Price Effect", 2},
+				        {"Volume Effect", 3},
+				        {"Mix Effect", 4},
+				        {"Current Revenue", 5}
+				    }
+				)
+
+	annotation PBI_Id = 1f5c26f4312549afb62fc4306ec1f894
+

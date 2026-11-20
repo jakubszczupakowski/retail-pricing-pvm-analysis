@@ -1,0 +1,234 @@
+table _Measures
+	lineageTag: 30705e69-9e6e-45e8-9851-9923a18593a5
+
+	measure 'Total Units' =
+			
+			SUM(FACT_sales[quantity])
+		formatString: 0
+		displayFolder: 01_Base Measures
+		lineageTag: 0d315aff-0bc5-4b89-9e00-6dc09e4a7d91
+
+	measure 'Gross Revenue' =
+			
+			SUM(FACT_sales[gross_revenue])
+		displayFolder: 01_Base Measures
+		lineageTag: 8a37bff0-d0e3-4a62-b9e9-9d9f313c80d5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total COGS' =
+			
+			SUM(FACT_sales[total_cogs])
+		displayFolder: 01_Base Measures
+		lineageTag: fe3cbf8e-52b3-4f02-ac89-a45cf919cf57
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Margin' =
+			
+			[Gross Revenue] - [Total COGS]
+		displayFolder: 01_Base Measures
+		lineageTag: 17014e60-0a25-4b21-87fc-3242894f124c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Margin %' =
+			
+			DIVIDE([Gross Margin], [Gross Revenue], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 01_Base Measures
+		lineageTag: c4155658-9aef-433a-bedf-44978ae50954
+
+	measure 'Average Selling Price' =
+			
+			DIVIDE([Gross Revenue], [Total Units], 0)
+		displayFolder: 01_Base Measures
+		lineageTag: 06c8429d-f01f-41c1-8920-d375430f6c35
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Unit Cost' =
+			
+			DIVIDE([Total COGS], [Total Units], 0)
+		displayFolder: 01_Base Measures
+		lineageTag: 26d56aba-8bb7-43a6-9db2-b0aa378cc6d1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Units LY' =
+			
+			CALCULATE(
+			    [Total Units],
+			    SAMEPERIODLASTYEAR(dim_calendar[Date])
+			)
+		formatString: 0
+		displayFolder: 02_Time Intelligence
+		lineageTag: fdbe3048-68e6-4356-865d-cdfc63bead2a
+
+	measure 'Revenue LY' =
+			
+			CALCULATE(
+			    [Gross Revenue],
+			    SAMEPERIODLASTYEAR(dim_calendar[Date])
+			)
+		displayFolder: 02_Time Intelligence
+		lineageTag: 742b4fbc-6d99-4c66-bb41-32dda92d6c4b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ASP LY' =
+			
+			DIVIDE([Revenue LY], [Units LY], 0)
+		displayFolder: 02_Time Intelligence
+		lineageTag: a789fb83-8b03-49f3-af3b-7d09face0f58
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue YoY Variance' =
+			
+			[Gross Revenue] - [Revenue LY]
+		displayFolder: 02_Time Intelligence
+		lineageTag: 7ef15e88-0975-4e0d-9a3a-215e9c8ffcd6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Price Effect' =
+			
+			SUMX(
+			    VALUES(dim_product[product_id]),
+			    VAR CurrentUnits = [Total Units]
+			    VAR CurrentPrice = [Average Selling Price]
+			    VAR PriorPrice = [ASP LY]
+			    RETURN
+			    IF(
+			        NOT ISBLANK(CurrentPrice) && NOT ISBLANK(PriorPrice),
+			        CurrentUnits * (CurrentPrice - PriorPrice),
+			        BLANK()
+			    )
+			)
+		displayFolder: 03_PVM Decomposition
+		lineageTag: 6ae74163-f529-454c-b983-d19541f07678
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Volume Effect' =
+			
+			VAR MarketGrowthRate = DIVIDE([Total Units] - [Units LY], [Units LY], 0)
+			RETURN
+			[Revenue LY] * MarketGrowthRate
+		displayFolder: 03_PVM Decomposition
+		lineageTag: 78d77c4b-29e8-49b6-b0e1-215729a310d6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Mix Effect' =
+			
+			[Revenue YoY Variance] - [Price Effect] - [Volume Effect]
+		displayFolder: 03_PVM Decomposition
+		lineageTag: 737c9d94-b84e-4d63-9f25-6974c76bb3d4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PVM Waterfall Value' =
+			
+			VAR SelectedStep = SELECTEDVALUE(pvm_bridge_axis[Step])
+			RETURN
+			SWITCH(
+			    SelectedStep,
+			    "Revenue LY", [Revenue LY],
+			    "Price Effect", [Price Effect],
+			    "Volume Effect", [Volume Effect],
+			    "Mix Effect", [Mix Effect],
+			    "Current Revenue", -[Gross Revenue],
+			    BLANK()
+			)
+		lineageTag: a5a59a75-db13-4685-9fba-c3dacf6dc04c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PVM_Total_Bars =
+			
+			VAR StepOrder = SELECTEDVALUE(pvm_bridge_axis[Sort_Order])
+			RETURN
+			SWITCH(
+			    StepOrder,
+			    1, [Revenue LY],
+			    5, [Gross Revenue],
+			    BLANK()
+			)
+		lineageTag: 5c648592-270e-4ce3-a7bc-64d067e29fd7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PVM_Base_Offset =
+			
+			VAR StepOrder = SELECTEDVALUE(pvm_bridge_axis[Sort_Order])
+			VAR StartVal = [Revenue LY]
+			VAR P_Eff = [Price Effect]
+			VAR V_Eff = [Volume Effect]
+			VAR M_Eff = [Mix Effect]
+			RETURN
+			SWITCH(
+			    StepOrder,
+			    1, 0,
+			    2, StartVal + MIN(0, P_Eff),
+			    3, StartVal + P_Eff + MIN(0, V_Eff),
+			    4, StartVal + P_Eff + V_Eff + MIN(0, M_Eff),
+			    5, 0,
+			    BLANK()
+			)
+		lineageTag: 873ea366-28de-4108-b4df-bda8502ebf08
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PVM_Increase_Bars = ```
+			
+			VAR StepOrder = SELECTEDVALUE(pvm_bridge_axis[Sort_Order])
+			VAR Val = 
+			    SWITCH(
+			        StepOrder,
+			        2, [Price Effect],
+			        3, [Volume Effect],
+			        4, [Mix Effect],
+			        BLANK()
+			    )
+			RETURN
+			IF(Val > 0, Val, BLANK())
+			```
+		lineageTag: 72fa8da5-2a1b-431c-8d93-da3eb9927d60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PVM_Decrease_Bars = ```
+			
+			VAR StepOrder = SELECTEDVALUE(pvm_bridge_axis[Sort_Order])
+			VAR Val = 
+			    SWITCH(
+			        StepOrder,
+			        2, [Price Effect],
+			        3, [Volume Effect],
+			        4, [Mix Effect],
+			        BLANK()
+			    )
+			RETURN
+			IF(Val < 0, ABS(Val), BLANK())
+			```
+		lineageTag: 3cc83581-5f5a-4624-9f6a-c94638756828
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		formatString: 0
+		lineageTag: 604f634e-47fd-4666-8d1b-82c603647e59
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = { BLANK() }
+
+	annotation PBI_Id = de07566a04c340cf837858ac5fbdf8dc
+

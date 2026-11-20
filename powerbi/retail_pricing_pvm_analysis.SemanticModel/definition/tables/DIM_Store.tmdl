@@ -1,0 +1,45 @@
+table DIM_Store
+	lineageTag: dd10e6ff-f3dc-4c4a-a58a-106ef124f668
+
+	column store_id
+		dataType: string
+		lineageTag: 91868b86-51a7-4383-a1cd-3cdcc253e311
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: 49a5140b-5fb1-449f-881c-dfc8b8028355
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 466ceeca-0c9c-4530-a28f-5bca1336f5fb
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: d9d246a2-4040-40c4-a45c-1c23ee0b9f87
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_Store = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents("C:\Portfolio\retail-pricing-pvm-analysis\data_clean\dim_store.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

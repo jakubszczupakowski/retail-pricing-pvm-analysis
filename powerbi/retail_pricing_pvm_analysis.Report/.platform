@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "retail_pricing_pvm_analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0d940e84-88fc-4ef1-8f7f-7c218bf2ddde"
+  }
+}

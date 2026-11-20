@@ -1,0 +1,85 @@
+table DIM_Product
+	lineageTag: ed37f25d-c038-4bd7-9822-4a1ca1860144
+
+	column product_id
+		dataType: string
+		lineageTag: 5ff3e044-9016-427f-9494-ba31413ce55b
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 6fd75e22-bd98-44a0-9b21-87614df20f79
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 05bc9bc8-2e94-47c5-b4c9-7a64c246cf14
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand
+		dataType: string
+		lineageTag: 2f67e573-350d-494d-b105-bcf2f2baa03d
+		summarizeBy: none
+		sourceColumn: brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column base_price
+		dataType: double
+		lineageTag: 674996d1-72d7-42d6-a66c-ded8a60f9aba
+		summarizeBy: none
+		sourceColumn: base_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit_cost
+		dataType: double
+		lineageTag: 62d21463-a2dd-4aeb-ae39-b5f877dccb85
+		summarizeBy: none
+		sourceColumn: unit_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column standard_unit_margin
+		dataType: double
+		lineageTag: ffab8fbe-7c1e-4f92-8fa0-78ee99d2b56c
+		summarizeBy: none
+		sourceColumn: standard_unit_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column standard_margin_rate
+		dataType: double
+		lineageTag: cc129fcf-4576-4e7d-a7c8-313297dcfa5c
+		summarizeBy: none
+		sourceColumn: standard_margin_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_Product = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents("C:\Portfolio\retail-pricing-pvm-analysis\data_clean\dim_product.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

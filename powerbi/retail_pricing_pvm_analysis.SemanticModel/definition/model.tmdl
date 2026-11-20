@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pl-PL
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DIM_Product","DIM_Store","FACT_Sales"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DIM_Product
+ref table DIM_Store
+ref table FACT_Sales
+ref table DIM_Calendar
+ref table _Measures
+ref table pvm_bridge_axis
+
+ref cultureInfo en-US
+

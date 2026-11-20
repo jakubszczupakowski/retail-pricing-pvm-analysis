@@ -10,23 +10,35 @@ def generate_synthetic_retail_data():
 
     np.random.seed(42)
 
-    # 1. Product Dimension (Dim_Product)
-    n_products = 100
+    # 1. Product Dimension Table (Dim_Product)
+    n_products = 200
     categories = ['Electronics', 'Home & Kitchen', 'Home & Garden', 'Sports']
-    brands = ['Apex', 'Vanguard', 'Horizon', 'Delta', 'Nova']
+    prod_categories = np.random.choice(categories, n_products, p=[0.25, 0.25, 0.25, 0.25])
 
-    products_data = {
-        'product_id': [f'PRD_{i:03d}' for i in range(1, n_products + 1)],
-        'product_name': [f'Product {i}' for i in range(1, n_products + 1)],
-        'category': np.random.choice(categories, n_products),
-        'brand': np.random.choice(brands, n_products),
-        'base_price': np.round(np.random.uniform(50, 3000, n_products), 2),
-    }
-    df_products = pd.DataFrame(products_data)
-    # Unit cost baseline (COGS: 50% - 75% of base price)
-    df_products['unit_cost'] = np.round(
-        df_products['base_price'] * np.random.uniform(0.50, 0.75, n_products), 2
+    # Distinct price tiers per category to drive a clear negative Mix Effect
+    base_prices = np.where(
+        prod_categories == 'Electronics',
+        np.random.uniform(1100, 2500, n_products),
+        np.random.uniform(120, 480, n_products)
+    ).round(2)
+
+    margin_rates = np.where(
+        prod_categories == 'Electronics',
+        np.random.uniform(0.25, 0.35, n_products),
+        np.random.uniform(0.42, 0.55, n_products)
     )
+    unit_costs = (base_prices * (1 - margin_rates)).round(2)
+
+    brands = ['Apex', 'NordicHome', 'Veloce', 'Lumina', 'Kinetix']
+
+    df_products = pd.DataFrame({
+        'product_id': [f'PROD_{i:04d}' for i in range(1, n_products + 1)],
+        'product_name': [f'Product {i:04d}' for i in range(1, n_products + 1)],
+        'category': prod_categories,
+        'brand': np.random.choice(brands, n_products),
+        'base_price': base_prices,
+        'unit_cost': unit_costs,
+    })
 
     # 2. Store Dimension (Dim_Store)
     stores_data = {
@@ -43,15 +55,33 @@ def generate_synthetic_retail_data():
     }
     df_stores = pd.DataFrame(stores_data)
 
-    # 3. Transaction Fact Table (Fact_Sales)
-    n_transactions = 200000
-    start_date = datetime(2024, 1, 1)
+    # 3. Transaction Fact Table (Fact_Sales) - 3 Full Years (2023, 2024, 2025)
+    n_transactions = 172500
 
+    # Progressive volume growth: 2023 (30%), 2024 (34%), 2025 (36%)
+    years = np.random.choice([2023, 2024, 2025], size=n_transactions, p=[0.30, 0.34, 0.36])
+    random_days = np.random.randint(0, 365, size=n_transactions)
     date_series = [
-        start_date + timedelta(days=int(np.random.randint(0, 730)))
-        for _ in range(n_transactions)
+        datetime(int(y), 1, 1) + timedelta(days=int(d))
+        for y, d in zip(years, random_days)
     ]
-    product_samples = np.random.choice(df_products['product_id'], n_transactions)
+
+    # Category mix shift across years:
+    # 2023 -> 2024: slight premiumization (+Mix)
+    # 2024 -> 2025: strong shift away from expensive Electronics (-Mix red bar)
+    cat_weights = {
+        2023: {'Electronics': 0.34, 'Home & Kitchen': 0.22, 'Home & Garden': 0.22, 'Sports': 0.22},
+        2024: {'Electronics': 0.40, 'Home & Kitchen': 0.20, 'Home & Garden': 0.20, 'Sports': 0.20},
+        2025: {'Electronics': 0.16, 'Home & Kitchen': 0.34, 'Home & Garden': 0.25, 'Sports': 0.25},
+    }
+
+    product_samples = np.empty(n_transactions, dtype=object)
+    for yr in [2023, 2024, 2025]:
+        mask = (years == yr)
+        weights = df_products['category'].map(cat_weights[yr])
+        weights = weights / weights.sum()
+        product_samples[mask] = np.random.choice(df_products['product_id'], size=mask.sum(), p=weights)
+
     store_samples = np.random.choice(df_stores['store_id'], n_transactions)
     qty_samples = np.random.choice(
         [1, 2, 3, 4, 5], n_transactions, p=[0.60, 0.25, 0.10, 0.03, 0.02]
@@ -74,10 +104,19 @@ def generate_synthetic_retail_data():
 
     # Join baseline prices and costs
     df_sales = df_sales.merge(
-        df_products[['product_id', 'base_price', 'unit_cost']],
+        df_products[['product_id', 'base_price', 'unit_cost', 'category']],
         on='product_id',
         how='left',
     )
+
+    # Progressive YoY price inflation: 2023 (1.00x) -> 2024 (1.065x) -> 2025 (1.145x)
+    tx_year = pd.to_datetime(df_sales['transaction_date']).dt.year
+    price_multiplier = np.select(
+        [tx_year == 2023, tx_year == 2024, tx_year == 2025],
+        [1.00, 1.065, 1.145],
+        default=1.00
+    )
+    df_sales['effective_base_price'] = df_sales['base_price'] * price_multiplier
 
     # Price markdown logic
     discount_mapping = {
@@ -90,7 +129,7 @@ def generate_synthetic_retail_data():
         df_sales['promo_type'].map(discount_mapping).fillna(1.0)
     )
     df_sales['unit_selling_price'] = np.round(
-        df_sales['base_price'] * df_sales['discount_rate'], 2
+        df_sales['effective_base_price'] * df_sales['discount_rate'], 2
     )
     df_sales['gross_revenue'] = np.round(
         df_sales['unit_selling_price'] * df_sales['quantity'], 2
@@ -99,15 +138,12 @@ def generate_synthetic_retail_data():
         df_sales['unit_cost'] * df_sales['quantity'], 2
     )
 
+    df_sales = df_sales.drop(columns=['category', 'effective_base_price'])
+
     # Export raw data extract
     df_products.to_csv('data_raw/dim_products_raw.csv', index=False)
     df_stores.to_csv('data_raw/dim_stores_raw.csv', index=False)
     df_sales.to_csv('data_raw/fact_transactions_raw.csv', index=False)
-
-    print("Data generation complete:")
-    print(" - data_raw/dim_products_raw.csv")
-    print(" - data_raw/dim_stores_raw.csv")
-    print(" - data_raw/fact_transactions_raw.csv")
 
 
 if __name__ == '__main__':

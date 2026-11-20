@@ -1,101 +1,201 @@
 product_id,product_name,category,brand,base_price,unit_cost
-PRD_001,Product 1,Home & Garden,Vanguard,2092.69,1383.85
-PRD_002,Product 2,Sports,Vanguard,844.77,563.66
-PRD_003,Product 3,Electronics,Delta,770.17,551.47
-PRD_004,Product 4,Home & Garden,Vanguard,546.46,304.68
-PRD_005,Product 5,Home & Garden,Vanguard,695.35,434.45
-PRD_006,Product 6,Sports,Delta,1696.4,1090.79
-PRD_007,Product 7,Electronics,Delta,1241.32,859.17
-PRD_008,Product 8,Electronics,Apex,241.43,123.35
-PRD_009,Product 9,Home & Garden,Nova,799.05,598.2
-PRD_010,Product 10,Home & Kitchen,Nova,778.28,480.58
-PRD_011,Product 11,Home & Garden,Vanguard,2104.1,1199.11
-PRD_012,Product 12,Home & Garden,Nova,2151.2,1550.74
-PRD_013,Product 13,Home & Garden,Vanguard,486.86,334.44
-PRD_014,Product 14,Home & Garden,Apex,2993.33,2209.88
-PRD_015,Product 15,Sports,Delta,837.0,487.71
-PRD_016,Product 16,Electronics,Delta,2931.01,1870.54
-PRD_017,Product 17,Sports,Delta,1262.56,811.92
-PRD_018,Product 18,Sports,Nova,147.5,109.9
-PRD_019,Product 19,Sports,Apex,1067.96,554.1
-PRD_020,Product 20,Home & Garden,Nova,1921.34,1107.51
-PRD_021,Product 21,Home & Kitchen,Nova,2058.08,1127.27
-PRD_022,Product 22,Electronics,Apex,1616.26,916.61
-PRD_023,Product 23,Home & Kitchen,Apex,1370.96,851.8
-PRD_024,Product 24,Sports,Apex,1681.03,997.14
-PRD_025,Product 25,Sports,Apex,1798.46,1076.69
-PRD_026,Product 26,Home & Kitchen,Delta,288.52,205.15
-PRD_027,Product 27,Home & Kitchen,Horizon,1140.48,835.41
-PRD_028,Product 28,Home & Kitchen,Horizon,764.37,395.64
-PRD_029,Product 29,Sports,Apex,2419.26,1335.99
-PRD_030,Product 30,Sports,Horizon,1437.39,959.87
-PRD_031,Product 31,Electronics,Horizon,2951.1,1740.15
-PRD_032,Product 32,Electronics,Apex,1226.53,691.2
-PRD_033,Product 33,Sports,Horizon,2458.47,1410.73
-PRD_034,Product 34,Home & Kitchen,Nova,2405.12,1396.5
-PRD_035,Product 35,Home & Kitchen,Vanguard,494.62,352.25
-PRD_036,Product 36,Electronics,Vanguard,1549.19,827.51
-PRD_037,Product 37,Sports,Apex,2102.65,1423.97
-PRD_038,Product 38,Electronics,Delta,2582.16,1647.95
-PRD_039,Product 39,Electronics,Apex,1011.58,580.78
-PRD_040,Product 40,Home & Garden,Delta,699.71,423.29
-PRD_041,Product 41,Home & Garden,Vanguard,2147.89,1211.52
-PRD_042,Product 42,Home & Garden,Apex,2438.03,1591.74
-PRD_043,Product 43,Home & Kitchen,Nova,1078.56,561.28
-PRD_044,Product 44,Sports,Horizon,333.72,167.29
-PRD_045,Product 45,Sports,Delta,2824.54,1855.65
-PRD_046,Product 46,Sports,Horizon,1222.84,670.81
-PRD_047,Product 47,Sports,Horizon,1577.37,816.66
-PRD_048,Product 48,Home & Garden,Apex,2521.24,1510.72
-PRD_049,Product 49,Home & Kitchen,Horizon,2043.29,1047.58
-PRD_050,Product 50,Home & Kitchen,Nova,2218.89,1601.27
-PRD_051,Product 51,Home & Garden,Horizon,666.76,337.98
-PRD_052,Product 52,Home & Kitchen,Apex,1647.27,1062.02
-PRD_053,Product 53,Home & Garden,Nova,2102.56,1281.76
-PRD_054,Product 54,Sports,Vanguard,724.22,483.78
-PRD_055,Product 55,Home & Garden,Horizon,566.12,329.5
-PRD_056,Product 56,Sports,Apex,2947.4,1587.94
-PRD_057,Product 57,Sports,Vanguard,1574.08,1173.41
-PRD_058,Product 58,Electronics,Vanguard,819.45,581.59
-PRD_059,Product 59,Home & Garden,Delta,2988.95,2137.4
-PRD_060,Product 60,Electronics,Nova,2897.99,1630.3
-PRD_061,Product 61,Home & Garden,Horizon,1696.97,864.96
-PRD_062,Product 62,Home & Garden,Apex,2653.78,1528.09
-PRD_063,Product 63,Electronics,Delta,606.69,384.81
-PRD_064,Product 64,Electronics,Nova,872.67,507.6
-PRD_065,Product 65,Home & Garden,Delta,2116.06,1495.99
-PRD_066,Product 66,Home & Kitchen,Nova,2547.65,1446.77
-PRD_067,Product 67,Sports,Nova,2576.16,1909.74
-PRD_068,Product 68,Electronics,Horizon,1243.3,763.78
-PRD_069,Product 69,Sports,Nova,2668.92,1896.28
-PRD_070,Product 70,Home & Kitchen,Delta,2560.24,1404.53
-PRD_071,Product 71,Home & Kitchen,Nova,2810.12,1694.05
-PRD_072,Product 72,Home & Kitchen,Horizon,2366.75,1597.27
-PRD_073,Product 73,Electronics,Horizon,2023.52,1081.75
-PRD_074,Product 74,Home & Kitchen,Delta,1763.03,940.02
-PRD_075,Product 75,Electronics,Vanguard,1148.23,852.43
-PRD_076,Product 76,Home & Kitchen,Vanguard,2823.39,1916.09
-PRD_077,Product 77,Sports,Nova,2922.31,1491.16
-PRD_078,Product 78,Sports,Apex,887.57,532.28
-PRD_079,Product 79,Home & Garden,Nova,950.82,578.46
-PRD_080,Product 80,Sports,Delta,1482.56,1017.05
-PRD_081,Product 81,Home & Garden,Delta,1372.85,772.52
-PRD_082,Product 82,Sports,Delta,2983.65,1629.32
-PRD_083,Product 83,Electronics,Delta,568.98,295.99
-PRD_084,Product 84,Sports,Delta,103.32,62.72
-PRD_085,Product 85,Home & Garden,Horizon,1506.99,1012.89
-PRD_086,Product 86,Home & Garden,Vanguard,577.53,297.17
-PRD_087,Product 87,Home & Kitchen,Delta,1131.08,824.33
-PRD_088,Product 88,Electronics,Apex,2245.3,1370.95
-PRD_089,Product 89,Sports,Apex,2176.77,1218.88
-PRD_090,Product 90,Home & Kitchen,Apex,958.78,501.89
-PRD_091,Product 91,Sports,Apex,1650.49,900.7
-PRD_092,Product 92,Sports,Horizon,1551.0,1137.9
-PRD_093,Product 93,Home & Kitchen,Apex,1927.18,1271.11
-PRD_094,Product 94,Home & Kitchen,Delta,788.86,496.33
-PRD_095,Product 95,Home & Kitchen,Nova,1790.12,1189.14
-PRD_096,Product 96,Home & Kitchen,Apex,2937.73,1788.84
-PRD_097,Product 97,Home & Kitchen,Horizon,1485.89,1014.13
-PRD_098,Product 98,Sports,Horizon,2722.99,1393.98
-PRD_099,Product 99,Home & Kitchen,Apex,1331.46,854.14
-PRD_100,Product 100,Electronics,Nova,1082.73,584.31
+PROD_0001,Product 0001,Home & Kitchen,Lumina,157.12,76.68
+PROD_0002,Product 0002,Sports,Veloce,444.92,249.23
+PROD_0003,Product 0003,Home & Garden,Kinetix,301.89,152.48
+PROD_0004,Product 0004,Home & Garden,Apex,417.52,209.23
+PROD_0005,Product 0005,Electronics,Kinetix,1949.0,1438.24
+PROD_0006,Product 0006,Electronics,Apex,1112.88,783.38
+PROD_0007,Product 0007,Electronics,NordicHome,1242.06,905.92
+PROD_0008,Product 0008,Sports,Apex,123.9,56.95
+PROD_0009,Product 0009,Home & Garden,Lumina,445.94,232.51
+PROD_0010,Product 0010,Home & Garden,Veloce,152.86,86.41
+PROD_0011,Product 0011,Electronics,NordicHome,1868.23,1393.83
+PROD_0012,Product 0012,Sports,Apex,462.02,217.59
+PROD_0013,Product 0013,Sports,Kinetix,462.22,260.6
+PROD_0014,Product 0014,Electronics,NordicHome,1413.98,1048.92
+PROD_0015,Product 0015,Electronics,NordicHome,2097.05,1389.59
+PROD_0016,Product 0016,Electronics,Apex,1432.15,942.23
+PROD_0017,Product 0017,Home & Kitchen,NordicHome,225.56,113.49
+PROD_0018,Product 0018,Home & Garden,Kinetix,238.32,125.86
+PROD_0019,Product 0019,Home & Kitchen,NordicHome,362.11,207.45
+PROD_0020,Product 0020,Home & Kitchen,Kinetix,390.85,209.66
+PROD_0021,Product 0021,Home & Garden,Apex,404.97,192.62
+PROD_0022,Product 0022,Electronics,Veloce,1895.63,1382.04
+PROD_0023,Product 0023,Home & Kitchen,NordicHome,152.83,82.02
+PROD_0024,Product 0024,Home & Kitchen,Veloce,297.99,157.41
+PROD_0025,Product 0025,Home & Kitchen,Kinetix,140.72,71.79
+PROD_0026,Product 0026,Sports,NordicHome,317.83,146.33
+PROD_0027,Product 0027,Electronics,Lumina,2462.21,1732.77
+PROD_0028,Product 0028,Home & Garden,Veloce,439.57,235.12
+PROD_0029,Product 0029,Home & Garden,NordicHome,246.33,119.25
+PROD_0030,Product 0030,Electronics,Veloce,1983.59,1437.62
+PROD_0031,Product 0031,Home & Garden,NordicHome,171.48,94.45
+PROD_0032,Product 0032,Electronics,Apex,1803.69,1191.3
+PROD_0033,Product 0033,Electronics,Veloce,1907.67,1333.14
+PROD_0034,Product 0034,Sports,Lumina,156.4,87.13
+PROD_0035,Product 0035,Sports,Lumina,150.28,77.43
+PROD_0036,Product 0036,Sports,Kinetix,372.35,195.68
+PROD_0037,Product 0037,Home & Kitchen,NordicHome,146.19,67.4
+PROD_0038,Product 0038,Electronics,Veloce,1134.04,823.03
+PROD_0039,Product 0039,Home & Garden,Kinetix,374.25,188.82
+PROD_0040,Product 0040,Home & Kitchen,Veloce,149.29,74.32
+PROD_0041,Product 0041,Electronics,NordicHome,2416.64,1807.63
+PROD_0042,Product 0042,Home & Kitchen,Lumina,475.19,234.62
+PROD_0043,Product 0043,Electronics,Apex,2380.81,1735.27
+PROD_0044,Product 0044,Sports,Lumina,253.43,115.33
+PROD_0045,Product 0045,Home & Kitchen,Kinetix,412.61,231.34
+PROD_0046,Product 0046,Home & Garden,Apex,461.01,242.54
+PROD_0047,Product 0047,Home & Kitchen,Kinetix,474.96,270.21
+PROD_0048,Product 0048,Home & Garden,NordicHome,391.22,176.21
+PROD_0049,Product 0049,Home & Garden,Apex,255.45,131.48
+PROD_0050,Product 0050,Electronics,Kinetix,2294.21,1606.3
+PROD_0051,Product 0051,Sports,NordicHome,399.77,228.38
+PROD_0052,Product 0052,Sports,Lumina,321.03,154.9
+PROD_0053,Product 0053,Sports,NordicHome,272.72,150.74
+PROD_0054,Product 0054,Sports,Veloce,446.29,206.75
+PROD_0055,Product 0055,Home & Garden,NordicHome,160.03,88.55
+PROD_0056,Product 0056,Sports,NordicHome,297.35,165.09
+PROD_0057,Product 0057,Electronics,Veloce,2410.62,1739.56
+PROD_0058,Product 0058,Electronics,Kinetix,2074.44,1480.51
+PROD_0059,Product 0059,Electronics,Kinetix,1898.09,1300.97
+PROD_0060,Product 0060,Home & Kitchen,NordicHome,162.77,93.02
+PROD_0061,Product 0061,Home & Kitchen,Veloce,162.31,77.78
+PROD_0062,Product 0062,Home & Kitchen,Veloce,353.72,184.31
+PROD_0063,Product 0063,Sports,Lumina,388.58,198.89
+PROD_0064,Product 0064,Home & Kitchen,Kinetix,330.01,172.5
+PROD_0065,Product 0065,Home & Kitchen,Apex,466.38,246.2
+PROD_0066,Product 0066,Home & Garden,Kinetix,254.95,129.32
+PROD_0067,Product 0067,Electronics,Kinetix,2075.82,1505.81
+PROD_0068,Product 0068,Sports,Lumina,432.7,240.73
+PROD_0069,Product 0069,Electronics,Apex,1603.29,1172.56
+PROD_0070,Product 0070,Sports,Lumina,466.76,213.31
+PROD_0071,Product 0071,Sports,Apex,124.38,66.1
+PROD_0072,Product 0072,Electronics,NordicHome,2234.16,1475.27
+PROD_0073,Product 0073,Electronics,Apex,2313.9,1716.86
+PROD_0074,Product 0074,Sports,Lumina,440.81,232.25
+PROD_0075,Product 0075,Home & Garden,Kinetix,309.97,178.76
+PROD_0076,Product 0076,Home & Garden,Apex,477.47,267.24
+PROD_0077,Product 0077,Sports,Apex,146.57,71.37
+PROD_0078,Product 0078,Electronics,Veloce,2009.95,1427.5
+PROD_0079,Product 0079,Home & Kitchen,Kinetix,468.95,270.34
+PROD_0080,Product 0080,Electronics,NordicHome,2214.11,1468.95
+PROD_0081,Product 0081,Sports,Lumina,346.58,190.61
+PROD_0082,Product 0082,Home & Garden,NordicHome,370.47,182.51
+PROD_0083,Product 0083,Home & Kitchen,Kinetix,283.63,163.78
+PROD_0084,Product 0084,Electronics,Apex,1231.57,841.33
+PROD_0085,Product 0085,Home & Kitchen,Apex,330.35,157.25
+PROD_0086,Product 0086,Home & Kitchen,Kinetix,444.42,247.45
+PROD_0087,Product 0087,Home & Garden,Apex,136.36,67.52
+PROD_0088,Product 0088,Home & Garden,Apex,221.15,121.42
+PROD_0089,Product 0089,Sports,Apex,462.15,262.07
+PROD_0090,Product 0090,Home & Kitchen,Lumina,440.49,241.56
+PROD_0091,Product 0091,Electronics,Lumina,1142.7,820.04
+PROD_0092,Product 0092,Home & Garden,Veloce,343.25,160.9
+PROD_0093,Product 0093,Sports,NordicHome,219.86,103.79
+PROD_0094,Product 0094,Home & Garden,Kinetix,187.72,99.18
+PROD_0095,Product 0095,Sports,Kinetix,286.93,141.5
+PROD_0096,Product 0096,Home & Kitchen,Kinetix,247.21,136.79
+PROD_0097,Product 0097,Home & Garden,Veloce,330.12,178.89
+PROD_0098,Product 0098,Home & Kitchen,Lumina,147.98,68.59
+PROD_0099,Product 0099,Electronics,Veloce,1972.05,1448.6
+PROD_0100,Product 0100,Electronics,Kinetix,1219.49,855.94
+PROD_0101,Product 0101,Electronics,NordicHome,1172.35,816.82
+PROD_0102,Product 0102,Home & Garden,Apex,312.99,180.45
+PROD_0103,Product 0103,Home & Kitchen,Lumina,231.43,128.77
+PROD_0104,Product 0104,Home & Garden,Lumina,412.97,208.22
+PROD_0105,Product 0105,Sports,Veloce,366.5,192.49
+PROD_0106,Product 0106,Electronics,Lumina,2466.19,1605.5
+PROD_0107,Product 0107,Home & Kitchen,Kinetix,447.93,212.2
+PROD_0108,Product 0108,Sports,Kinetix,416.11,222.85
+PROD_0109,Product 0109,Electronics,Veloce,2213.26,1603.59
+PROD_0110,Product 0110,Electronics,Kinetix,1479.17,1008.57
+PROD_0111,Product 0111,Home & Kitchen,NordicHome,340.83,171.53
+PROD_0112,Product 0112,Electronics,Veloce,1209.84,835.32
+PROD_0113,Product 0113,Sports,NordicHome,455.78,227.37
+PROD_0114,Product 0114,Sports,Apex,431.78,227.45
+PROD_0115,Product 0115,Home & Garden,NordicHome,136.28,69.26
+PROD_0116,Product 0116,Sports,Apex,129.49,67.76
+PROD_0117,Product 0117,Sports,Apex,255.53,138.43
+PROD_0118,Product 0118,Electronics,NordicHome,1342.61,877.39
+PROD_0119,Product 0119,Sports,Veloce,475.42,228.55
+PROD_0120,Product 0120,Home & Garden,Kinetix,174.15,97.83
+PROD_0121,Product 0121,Sports,Kinetix,333.89,155.96
+PROD_0122,Product 0122,Sports,Apex,257.12,132.84
+PROD_0123,Product 0123,Home & Kitchen,Apex,469.17,217.56
+PROD_0124,Product 0124,Electronics,Veloce,1491.91,1008.36
+PROD_0125,Product 0125,Electronics,Lumina,2436.81,1687.62
+PROD_0126,Product 0126,Home & Kitchen,NordicHome,288.73,166.62
+PROD_0127,Product 0127,Sports,Apex,269.34,146.81
+PROD_0128,Product 0128,Sports,Kinetix,218.43,111.31
+PROD_0129,Product 0129,Electronics,Veloce,1687.44,1231.56
+PROD_0130,Product 0130,Home & Garden,NordicHome,431.3,235.69
+PROD_0131,Product 0131,Home & Kitchen,Veloce,412.64,231.86
+PROD_0132,Product 0132,Electronics,NordicHome,2160.98,1444.71
+PROD_0133,Product 0133,Electronics,NordicHome,1120.15,765.6
+PROD_0134,Product 0134,Home & Kitchen,Apex,319.96,163.71
+PROD_0135,Product 0135,Sports,Veloce,396.84,221.31
+PROD_0136,Product 0136,Home & Kitchen,Veloce,460.12,250.58
+PROD_0137,Product 0137,Home & Garden,Kinetix,425.87,245.99
+PROD_0138,Product 0138,Home & Garden,Kinetix,209.05,96.4
+PROD_0139,Product 0139,Home & Kitchen,Apex,282.2,159.36
+PROD_0140,Product 0140,Sports,Apex,166.5,84.09
+PROD_0141,Product 0141,Sports,Lumina,463.46,252.3
+PROD_0142,Product 0142,Home & Kitchen,Kinetix,338.22,171.8
+PROD_0143,Product 0143,Home & Kitchen,NordicHome,202.31,100.21
+PROD_0144,Product 0144,Home & Kitchen,Veloce,361.81,170.82
+PROD_0145,Product 0145,Home & Kitchen,Apex,342.53,189.48
+PROD_0146,Product 0146,Electronics,Veloce,1962.19,1295.13
+PROD_0147,Product 0147,Home & Garden,Veloce,160.88,90.45
+PROD_0148,Product 0148,Home & Garden,Lumina,361.77,167.5
+PROD_0149,Product 0149,Electronics,Kinetix,1624.46,1071.09
+PROD_0150,Product 0150,Home & Kitchen,Apex,398.03,199.94
+PROD_0151,Product 0151,Sports,Veloce,307.26,154.22
+PROD_0152,Product 0152,Electronics,Apex,2299.09,1508.24
+PROD_0153,Product 0153,Electronics,NordicHome,2022.17,1389.69
+PROD_0154,Product 0154,Home & Kitchen,Lumina,321.94,148.46
+PROD_0155,Product 0155,Sports,NordicHome,435.6,228.93
+PROD_0156,Product 0156,Electronics,Apex,1999.39,1340.79
+PROD_0157,Product 0157,Home & Garden,Apex,168.25,86.23
+PROD_0158,Product 0158,Sports,Kinetix,130.36,74.81
+PROD_0159,Product 0159,Electronics,Veloce,2416.32,1596.25
+PROD_0160,Product 0160,Home & Garden,Veloce,343.31,166.18
+PROD_0161,Product 0161,Home & Kitchen,NordicHome,373.47,212.59
+PROD_0162,Product 0162,Home & Garden,Lumina,196.67,98.65
+PROD_0163,Product 0163,Home & Garden,Veloce,169.09,92.68
+PROD_0164,Product 0164,Home & Garden,Kinetix,125.24,66.3
+PROD_0165,Product 0165,Electronics,NordicHome,2418.05,1805.43
+PROD_0166,Product 0166,Sports,NordicHome,332.37,177.41
+PROD_0167,Product 0167,Home & Kitchen,Kinetix,261.21,127.08
+PROD_0168,Product 0168,Electronics,Lumina,2367.49,1568.04
+PROD_0169,Product 0169,Electronics,Kinetix,1374.11,983.58
+PROD_0170,Product 0170,Home & Garden,Lumina,245.37,127.13
+PROD_0171,Product 0171,Home & Garden,Kinetix,305.04,150.61
+PROD_0172,Product 0172,Electronics,Kinetix,1125.51,748.86
+PROD_0173,Product 0173,Home & Garden,Apex,262.76,127.38
+PROD_0174,Product 0174,Electronics,NordicHome,2056.21,1460.47
+PROD_0175,Product 0175,Home & Garden,Kinetix,430.45,247.92
+PROD_0176,Product 0176,Electronics,Kinetix,1546.57,1136.74
+PROD_0177,Product 0177,Home & Garden,Veloce,172.95,86.93
+PROD_0178,Product 0178,Home & Kitchen,NordicHome,453.57,260.04
+PROD_0179,Product 0179,Sports,Veloce,297.16,153.18
+PROD_0180,Product 0180,Electronics,NordicHome,1494.6,1025.12
+PROD_0181,Product 0181,Home & Kitchen,Veloce,285.29,153.07
+PROD_0182,Product 0182,Electronics,Kinetix,2075.43,1443.93
+PROD_0183,Product 0183,Sports,Kinetix,297.34,168.34
+PROD_0184,Product 0184,Sports,Apex,238.35,135.91
+PROD_0185,Product 0185,Home & Kitchen,Veloce,348.02,168.91
+PROD_0186,Product 0186,Home & Garden,Lumina,206.45,106.44
+PROD_0187,Product 0187,Sports,Apex,147.31,72.26
+PROD_0188,Product 0188,Home & Garden,Veloce,166.4,87.11
+PROD_0189,Product 0189,Home & Garden,Veloce,166.1,91.02
+PROD_0190,Product 0190,Electronics,Apex,2229.57,1460.97
+PROD_0191,Product 0191,Electronics,Kinetix,2486.71,1826.9
+PROD_0192,Product 0192,Sports,Veloce,350.71,171.74
+PROD_0193,Product 0193,Sports,Kinetix,185.48,101.02
+PROD_0194,Product 0194,Home & Garden,Apex,244.44,123.02
+PROD_0195,Product 0195,Home & Kitchen,Kinetix,442.84,236.07
+PROD_0196,Product 0196,Home & Kitchen,NordicHome,290.63,165.11
+PROD_0197,Product 0197,Home & Garden,Lumina,360.32,166.02
+PROD_0198,Product 0198,Sports,Veloce,182.04,102.35
+PROD_0199,Product 0199,Sports,Lumina,189.22,86.37
+PROD_0200,Product 0200,Sports,Kinetix,134.71,70.32

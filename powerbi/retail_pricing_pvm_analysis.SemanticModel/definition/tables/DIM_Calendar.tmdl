@@ -1,0 +1,93 @@
+table DIM_Calendar
+	lineageTag: c93fd9d4-05d5-4ae7-8cf7-150bbce943cd
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: Short Date
+		lineageTag: 19da38aa-9fdc-43cd-a95e-c819c7dcaa6d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: d6967b80-7c14-49be-bbe3-28880e32f964
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_Quarter
+		lineageTag: f4cdb2a1-2881-4a5d-ba27-aace9019d758
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year_Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_Month
+		lineageTag: c69e6516-1b14-418c-8945-fa899f2b6ac6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year_Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Name
+		lineageTag: 3cadeecc-ab4e-4024-97c3-9b36fc0b6d76
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month_Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Number
+		formatString: 0
+		lineageTag: 728e212e-d6bf-468c-bbe1-ad76c2c04220
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month_Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_of_Week
+		lineageTag: 83ad7360-124d-47ca-8cf1-a0bccf7d2090
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day_of_Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_Number
+		formatString: 0
+		lineageTag: fe0ae019-a581-42a9-b74f-df78c189d0ef
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day_Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_Calendar = calculated
+		mode: import
+		source =
+				
+				VAR MinYear = 2024
+				VAR MaxYear = 2025
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(DATE(MinYear, 1, 1), DATE(MaxYear, 12, 31)),
+				    "Year", YEAR([Date]),
+				    "Year_Quarter", "Q" & FORMAT([Date], "q") & " " & YEAR([Date]),
+				    "Year_Month", FORMAT([Date], "yyyy-MM"),
+				    "Month_Name", FORMAT([Date], "mmm"),
+				    "Month_Number", MONTH([Date]),
+				    "Day_of_Week", FORMAT([Date], "ddd"),
+				    "Day_Number", WEEKDAY([Date], 2)
+				)
+
+	annotation PBI_Id = 4b7af5d87de94025aabb667002328366
+

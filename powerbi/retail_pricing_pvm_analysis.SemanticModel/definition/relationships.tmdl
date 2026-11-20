@@ -1,0 +1,12 @@
+relationship AutoDetected_4774c140-a261-4dee-b701-052eb0da0696
+	fromColumn: FACT_Sales.product_id
+	toColumn: DIM_Product.product_id
+
+relationship AutoDetected_03882d80-0fc0-4f7c-b56d-803de6bab872
+	fromColumn: FACT_Sales.store_id
+	toColumn: DIM_Store.store_id
+
+relationship 0d181746-8351-67c6-61a4-0e9ffa2d1888
+	fromColumn: FACT_Sales.transaction_date
+	toColumn: DIM_Calendar.Date
+
