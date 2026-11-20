@@ -32,8 +32,8 @@ This solution answers four core commercial questions:
 * **`02_transform_pricing_etl.py`**: Processes raw transaction logs via **DuckDB**, validates referential integrity, calculates unit costs/net revenues, and outputs a normalized **Star Schema** into `data_clean/` ready for Power BI ingestion.
 
 ### 2. Data Model (Star Schema)
-* **Fact Table:** `fact_sales` (transaction-level quantities, list prices, realized unit prices, discounts, COGS, and gross revenue).
-* **Dimension Tables:** `dim_product` (SKU, category, brand, price tier), `dim_store` (channel: Online/Offline, region), `dim_promo` (promo tier & discount depth), and a dedicated `Calendar` table supporting time-intelligence calculations.
+* **Fact Table:** `FACT_Sales` (transaction-level quantities, list prices, realized unit prices, discounts, COGS, and gross revenue).
+* **Dimension Tables:** `DIM_Product` (SKU, category, brand, price tier), `DIM_Store` (channel: Online/Offline, region) and a dedicated `DIM_Calendar` table supporting time-intelligence calculations.
 
 ### 3. Advanced DAX Engineering
 * **Price-Volume-Mix (PVM) Bridge Logic:**
